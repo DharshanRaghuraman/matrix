@@ -67,9 +67,6 @@ def display_matrix(m):
 
 
 
-# test comment
-
-
 m1 = matrix(int(input("Enter Number of Colomn: ")),int(input("Enter Number of Row: ")))
 m2 = matrix(int(input("Enter Number of Colomn: ")),int(input("Enter Number of Row: ")))
 print('matrix 1 is :')

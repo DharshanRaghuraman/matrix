@@ -75,6 +75,17 @@ def determinant(m):
         d = a*determinant(m1) - b*determinant(m2) + c*determinant(m3)
         return d
 
+
+def transpose(m):
+    l1=[]
+    for i in range(len(m)):
+        l2=[]
+        for j in range(len(m[0])):
+            l2.append(m[j][i])
+        l1.append(l2)
+    return l1
+
+
 def display_matrix(m):
     for i in range(len(m)):
         print("[", end=" ")

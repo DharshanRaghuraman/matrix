@@ -60,16 +60,11 @@ def display_matrix(m):
             print(m[i][j], end=" ")
         print("]")
 
+
 def determinant(m):
-    if len(m)==2:
+    if len(m) == 2:
         d = m[0][0] * m[1][1] - m[0][1] * m[1][0]
         return d
-
-# a=matrix()
-# b=matrix_addition()
-# c=matrix_subtraction()
-# d=matrix_multiplication()
-
 
 
 m1 = matrix(int(input("Enter Number of Colomn: ")),int(input("Enter Number of Row: ")))
@@ -82,24 +77,23 @@ display_matrix(m2)
 while True:
     choice = int(input("Enter choice: "))
     if choice == 1:
-        m3 = matrix_addition(m1,m2)
+        m3 = matrix_addition(m1, m2)
         display_matrix(m3)
     elif choice == 2:
-        m3 = matrix_subtraction(m1,m2)
+        m3 = matrix_subtraction(m1, m2)
         display_matrix(m3)
     elif choice == 3:
-        m3 = matrix_multiplication(m1,m2)
+        m3 = matrix_multiplication(m1, m2)
         display_matrix(m3)
     elif choice == 4:
         print('determinant of')
         display_matrix(m1)
         print('is ', determinant(m1))
 
-        print('\n')
-        
+        print()
+
         print('determinant of')
         display_matrix(m2)
         print('is ', determinant(m2))
     elif choice == 0:
         break
-

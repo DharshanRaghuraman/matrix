@@ -52,7 +52,10 @@ def matrix_multiplication(m1, m2):
 
 
 def determinant(m):
-    if len(m) == 2:
+    if len(m) == 1:
+        d = m[0][0]
+        return d
+    elif len(m) == 2:
         d = m[0][0] * m[1][1] - m[0][1] * m[1][0]
         return d
     elif len(m) == 3:
@@ -71,7 +74,6 @@ def determinant(m):
         
         d = a*determinant(m1) - b*determinant(m2) + c*determinant(m3)
         return d
-
 
 def display_matrix(m):
     for i in range(len(m)):

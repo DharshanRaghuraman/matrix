@@ -78,9 +78,9 @@ def determinant(m):
 
 def transpose(m):
     l1=[]
-    for i in range(len(m)):
+    for i in range(len(m[0])):
         l2=[]
-        for j in range(len(m[0])):
+        for j in range(len(m)):
             l2.append(m[j][i])
         l1.append(l2)
     return l1

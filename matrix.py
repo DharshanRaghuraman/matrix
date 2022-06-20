@@ -1,4 +1,7 @@
-def matrix(m=int(input("Number of Columns")), n=(int(input("Number of Rows")))):
+def matrix(m=None, n=None):
+    if n is None or m is None:
+        m = int(input("Number of Columns"))
+        n = int(input("Number of Rows"))
     L1 = []
     for i in range(n):
         L2 = []
@@ -89,33 +92,33 @@ def minors_of_matrix(m):
         l=list_for_detreminat(m)
         l1=[]
         for i in range(len(m)):
+            l2=[]
             for j in range(len(m[0])):
-                d=determinant_of_matrix(l[i][j])
-                print(l[i][j])
-                l1.append(d)
-        print(l1)
+                d=determinant_of_matrix(l[i+j])
+                l2.append(d)
+                print("Minor of ",m[i][j]," is ",d)
+            l1.append(l2)
+        return l1
     else:
         print("Minor can't be found, no of rows and no of columns must be equal")
 
 
 def cofactor_matrix(m):
-    if len(m)==len(m[0]):
-        l=list_for_detreminat(m)
-        l1=[]
-        for i in range(len(m)):
-            l2=[]
-            for j in range(len(m[0])):
-                d=determinant_of_matrix(l[i][j])
-                if (i+j)%2==0:
-                    l2.append(d)
-                else:
-                    l2.append(-d)
-            l1.append(l2)
-        return l1
+    a=minors_of_matrix(m)
+    l1=[]
+    for i in range(len(a)):
+        l2=[]
+        for j in range(len(a[0])):
+            if (i+j)%2==0:
+                l2.append(a[i][j])
+            else:
+                l2.append(-a[i][j])
+        l1.append(l2)
+    return l1
 
 
 def transpose_of_matrix(m):
-    l1=[]
+    l1=[]                                        
     for i in range(len(m[0])):
         l2=[]
         for j in range(len(m)):
@@ -141,9 +144,9 @@ def determinant_of_matrix(m):
             d = m[0][0] * m[1][1] - m[0][1] * m[1][0]
             
         else:
-            a=minors_of_matrix(m)
+            a=list_for_detreminat(m)
             d=0
-            for i in range(len(m)):
+            for i in range(len(m[0])):
                 if i%2==0:
                     d+=m[0][i]*determinant_of_matrix(a[i])
                 else:
@@ -156,16 +159,19 @@ def determinant_of_matrix(m):
 
 def inverse_of_matrix(m):
     if len(m)==len(m[0]):
-        a=cofactor_matrix(m)
         b=determinant_of_matrix(m)
-        l1=[]
-        for i in range(len(a[0])):
-            l2=[]
-            for j in range(len(a)):
-                l2.append(a[j][i]/b)
-            l1.append(l2)
-    else:
-        print("Inverse can't be found, no of rows and no of columns must be equal")
+        if b == 0:
+            print("Inverse of the matrix can't be found, determinant is 0")
+        else:
+            a=cofactor_matrix(m)
+            l1=[]
+            for i in range(len(a[0])):
+                l2=[]
+                for j in range(len(a)):
+                    l2.append(a[j][i]/b)
+                l1.append(l2)
+            return l1
+    print("Inverse can't be found, no of rows and no of columns must be equal")
 
 
 def display_matrix(m):
@@ -174,5 +180,3 @@ def display_matrix(m):
         for j in range(len(m[i])):
             print(m[i][j], end=" ")
         print("]")
-
-matrix()

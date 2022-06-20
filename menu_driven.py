@@ -1,4 +1,3 @@
-from types import NoneType
 from matrix import *
 
 print("\nWelcome to Matrix Calaculator\n\nCreate Matrix:")
@@ -34,7 +33,7 @@ while True:
     
     elif choice == 5:
         cofactor=cofactor_matrix(m1)
-        if cofactor is not NoneType:
+        if cofactor is not None:
             print('\nCofactor Matrix of')
             display_matrix(m1)
             print('is: ')
@@ -50,7 +49,7 @@ while True:
 
     elif choice == 7:
         adjoint=adjoint_of_matrix(m1)
-        if adjoint is not NoneType:
+        if adjoint is not None:
             print('\nAdjoint Matrix of the matrix')
             display_matrix(m1)
             print('is: ')
@@ -60,7 +59,7 @@ while True:
 
     elif choice == 8:
         determinant=determinant_of_matrix(m1)
-        if determinant is not NoneType:
+        if determinant is not None:
             print('\nDeterminat of the Matrix')
             display_matrix(m1)
             print(f'is: {determinant}')
@@ -69,7 +68,7 @@ while True:
     
     elif choice == 9:
         inverse=inverse_of_matrix(m1)
-        if inverse is not NoneType:
+        if inverse is not None:
             print('\nInverse of the Matrix')
             display_matrix(m1)
             print('is: ')

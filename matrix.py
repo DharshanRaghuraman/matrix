@@ -176,7 +176,7 @@ def inverse_of_matrix(m):
             for i in range(len(a[0])):
                 l2=[]
                 for j in range(len(a)):
-                    l2.append(a[i][j]/b)
+                    l2.append(Fraction(a[i][j],b))
                 l1.append(l2)
             return l1
     print("Inverse can't be found, no of rows and no of columns must be equal")

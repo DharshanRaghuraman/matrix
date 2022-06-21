@@ -1,3 +1,5 @@
+from fractions import Fraction
+
 def matrix(m=None, n=None):
     if n is None or m is None:
         m = int(input("Number of Columns"))
@@ -90,14 +92,21 @@ def list_for_detreminat(m):
 def minors_of_matrix(m):
     if len(m)==len(m[0]):
         l=list_for_detreminat(m)
-        l1=[]
-        for i in range(len(m)):
-            l2=[]
-            for j in range(len(m[0])):
-                d=determinant_of_matrix(l[i+j])
-                l2.append(d)
-                print("Minor of ",m[i][j]," is ",d)
-            l1.append(l2)
+        r = 1
+        c = 1
+        l1 = []
+        l2 = []
+        for i in l:
+            d=determinant_of_matrix(i)
+            if c > len(m):
+                r += 1
+                c = 1
+                l1.append(l2)
+                l2 =[]
+            l2.append(d)
+            print(f"Minor of {m[r-1][c-1]}{r,c} is ",d)
+            c += 1
+        l1.append(l2)
         return l1
     else:
         print("Minor can't be found, no of rows and no of columns must be equal")
@@ -129,8 +138,7 @@ def transpose_of_matrix(m):
 
 def adjoint_of_matrix(m):
     if len(m)==len(m[0]):
-        a=cofactor_matrix(m)
-        adj=transpose_of_matrix(a)
+        adj=transpose_of_matrix(cofactor_matrix(m))
         return adj
     else:
         print("Adjoint of the matrix can't be found, no of rows and no of columns must be equal")
@@ -163,12 +171,12 @@ def inverse_of_matrix(m):
         if b == 0:
             print("Inverse of the matrix can't be found, determinant is 0")
         else:
-            a=cofactor_matrix(m)
+            a = adjoint_of_matrix(m)
             l1=[]
             for i in range(len(a[0])):
                 l2=[]
                 for j in range(len(a)):
-                    l2.append(a[j][i]/b)
+                    l2.append(a[i][j]/b)
                 l1.append(l2)
             return l1
     print("Inverse can't be found, no of rows and no of columns must be equal")
